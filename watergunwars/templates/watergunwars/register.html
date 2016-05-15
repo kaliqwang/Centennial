@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    {% load staticfiles %}
+
+    <link rel="icon" href="{% static 'watergunwars/bluegun.ico' %}" />
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'watergunwars/bootstrap-3.3.6/docs/dist/css/bootstrap.min.css' %}" />
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link rel="stylesheet" href="{% static 'watergunwars/bootstrap-3.3.6/docs/assets/css/ie10-viewport-bug-workaround.css' %}" />
+
+    <title>Water Gun Wars Sign-Up</title>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+
+      <div class="page-header">
+        <h1>Water Gun Wars Registration</h1>
+        <p class="lead"></p>
+      </div>
+
+      {% if registered %}
+      <strong>Thank you for registering for Water Gun Wars 2016!</strong>
+
+      {% else %}
+
+        <p>You must pay $5 to Kunal (404-386-3991) in order to participate.</p>
+        <br/>
+        <form action = "{% url 'register' %}" id="user_form" method="post">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+            <br/>
+            <p> DO NOT register more than once! That would essentially be giving yourself two lives.</p>
+            <br/>
+            <button type="submit" name = "submit" class="btn btn-default">Sign Up</button>
+        </form>
+
+      {% endif %}
+
+      <br/>
+      <br/>
+
+      <div>
+        <a class="btn btn-default" href="{% url 'index' %}" role="button">Back &raquo;</a>
+      </div>
+
+    </div> <!-- /container -->
+
+   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{% static 'watergunwars/bootstrap-3.3.6/docs/assets/js/ie10-viewport-bug-workaround.js' %}"></script>
+  </body>
+</html>
