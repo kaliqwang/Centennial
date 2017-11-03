@@ -51,10 +51,12 @@ class UserProfileAdmin(admin.ModelAdmin):
     is_alive.admin_order_field = 'status_dead_confirmed'
     is_alive.short_description = "Is Alive"
 
-    readonly_fields = ('username', 'email', 'phone_num', 'is_active', 'is_alive')
+    # readonly_fields = ('username', 'email', 'phone_num', 'is_active', 'is_alive')
+    readonly_fields = ('email', 'phone_num', 'is_active', 'is_alive')
 
     fieldsets = (
-        ('User Info', {'fields': ('username', 'phone_num', 'email', 'is_active', 'is_alive')}),
+        # ('User Info', {'fields': ('username', 'phone_num', 'email', 'is_active', 'is_alive')}),
+        ('User Info', {'fields': ('user', 'phone_num', 'email', 'is_active', 'is_alive')}),
         ('Objective', {'fields': ('target', 'date_target_assigned', 'date_target_due', 'kill_count')}),
         ('Status', {'fields': ('status_dead', 'status_dead_confirmed', 'killed_by_target', 'date_of_death')}),
     )
